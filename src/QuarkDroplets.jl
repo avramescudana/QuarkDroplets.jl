@@ -1,6 +1,6 @@
 module QuarkDroplets
 
-export njlradius
+export njlradius, saveradius
 
 # Package which contains Bessel functions as besselj(ν,x)
 using SpecialFunctions

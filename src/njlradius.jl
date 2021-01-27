@@ -16,9 +16,16 @@ function njlradius(R)
     coef, avgcoef, energ, j = coefs(R, xroot, lroot, ϵroot, κ, norm)
     mass = solvenjl(κ, coef, energ, j)
     # Mvavg, Msavg, Mr, Mavg, qq̅, ψ̅ψavg, ε = observables(R, xroot, lroot, ϵroot, κ, norm, coef, energ, j, mass)
+    return xroot, lroot, ϵroot, κ, norm, coef, energ, j, mass
+
+end
+
+function saveradius(R, xroot, lroot, ϵroot, κ, norm, coef, energ, j, mass; foldername="results/")
 
     # Saving the relevant results to file
-    filename = string("results/",string(R),".jld")
+    !isdir(foldername) && mkdir(foldername)
+    fn = sprint(show, R, context=:compact=>true)
+    filename = joinpath(foldername, "$fn.jld")
     save(filename, "xroot", xroot, "lroot", lroot, "ϵroot", ϵroot, "κ", κ, "norm", norm, "coef", coef, "energ", energ, "j", j, "mass", mass)
 
 end
