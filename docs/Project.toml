@@ -1,0 +1,3 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+QuarkDroplets = "3f8511e3-5e9d-4377-ad05-a0ad8ede35a0"
