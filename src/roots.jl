@@ -1,6 +1,6 @@
 function roots(R)
 
-    println("Finding the roots...")
+    @info "Finding the roots..."
 
     # Compact notation for the possible parities
     ϵ = [1 -1]
@@ -16,16 +16,16 @@ function roots(R)
     stillsearch = true
     θ = false
     li = 0
-    while (stillsearch==true)
+    while stillsearch
         for ϵi in ϵ
             # Boundary condition
             boundary(x) = sphericalbessel(x, li) - ϵi * sphericalbessel(x, li + ϵi)
             if (li!=0) || (ϵi!=-1)
                 # Function for finding the root of the boundary condition in the interval [0,xmax]
-                root = find_zeros(boundary, 0, xmax)
-                # println(l, " ", root, " ", θ)
-                if (root==Float64[])
-                    if (θ==true)
+                root = find_zeros(boundary, zero(xmax), xmax)
+                @debug l, root, θ
+                if isempty(root)
+                    if θ
                         stillsearch=false
                     else
                         θ = true
@@ -45,10 +45,10 @@ function roots(R)
     # Number of roots
     κ = length(xroot)
 
-    println("Done!")
-    println("Roots found at: ", xroot)
-    println("Corresponding l: ", lroot)
-    println("Corresponding ϵ: ", ϵroot)
+    @info "Done!"
+    @debug "Roots found at: " xroot
+    @debug "Corresponding l: " lroot
+    @debug "Corresponding ϵ: " ϵroot
 
     return xroot, lroot, ϵroot, κ
 

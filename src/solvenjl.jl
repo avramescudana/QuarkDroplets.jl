@@ -1,6 +1,6 @@
 function solvenjl(κ, coef, energ, j)
 
-    println("Solving the NJL equations...")
+    @info "Solving the NJL equations..."
 
     constant = 4*Nc*Nf*G*ħ^3
     function f!(F, x)
@@ -14,8 +14,8 @@ function solvenjl(κ, coef, energ, j)
     result = nlsolve(f!, initial_x)
     mass = result.zero
 
-    println("Done!")
-    println("Masses: ", mass)
+    @info "Done!"
+    @debug "Masses: " mass
 
     return mass
 

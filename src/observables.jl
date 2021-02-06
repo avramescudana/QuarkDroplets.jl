@@ -1,6 +1,6 @@
 function observables(R, xroot, lroot, ϵroot, κ, norm, coef, energ, j, mass)
 
-    println("Extracting observables...")
+    @info "Extracting observables..."
 
     sinϕ = @. mass/√(energ^2+mass^2)
     cosϕ = @. √(1-sinϕ^2)
@@ -43,10 +43,10 @@ function observables(R, xroot, lroot, ϵroot, κ, norm, coef, energ, j, mass)
     ε₂ = ε₂ *2*Nc*Nf*G*ħ^3
     ε = (ε₁ + ε₂) / (4*π*R^3/3)
 
-    println("Done!")
-    println("Average mass: ", Mavg)
-    println("Average value of chiral condensate: ", ψ̅ψavg)
-    println("Energy density of a chiral pair: ", ε)
+    @info "Done!"
+    @debug "Average mass: " Mavg
+    @debug "Average value of chiral condensate: " ψ̅ψavg
+    @debug "Energy density of a chiral pair: " ε
 
     return Mvavg, Msavg, Mr, Mavg, qq̅, ψ̅ψavg, ε
 

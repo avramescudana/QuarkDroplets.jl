@@ -1,6 +1,6 @@
 function norms(R, xroot, lroot, ϵroot)
 
-    println("Computing normalization constants...")
+    @info "Computing normalization constants..."
 
     # Coefficient depending on ϵ which appears in the normalization constant
     function coefnorm(l, ϵ)
@@ -13,7 +13,7 @@ function norms(R, xroot, lroot, ϵroot)
 
     norm = @. 1/√(R^3*2*sphericalbessel(xroot, lroot)^2*(1+coefnorm(lroot, ϵroot)/xroot))
 
-    println("Done!")
+    @info "Done!"
 
     return norm
 
